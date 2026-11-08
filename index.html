@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bv-trip · Transporte Bosque Valle</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap">
+<style>
+:root{--bg:#f1f4f2;--card:#fff;--ink:#12201a;--muted:#5b6a63;--line:#e1e7e3;--g:#176a45;--gsoft:#e2f0e8;--wa:#25c95e;--dark:#0f1d17;--hero1:#7f9c8a;--hero2:#c8a77b;--hero3:#41604d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1612;--card:#17221c;--ink:#e9f1ec;--muted:#9fb0a6;--line:#273630;--g:#2f9a6b;--gsoft:#1d3328;--dark:#070d0a}}
+:root[data-theme="dark"]{--bg:#0e1612;--card:#17221c;--ink:#e9f1ec;--muted:#9fb0a6;--line:#273630;--g:#2f9a6b;--gsoft:#1d3328;--dark:#070d0a}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Roboto,"Segoe UI",system-ui,sans-serif;line-height:1.45}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:30}
+.wrap{max-width:520px;margin:0 auto}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;gap:12px;align-items:center}
+.logo{width:38px;height:38px;border-radius:10px;background:var(--g);display:grid;place-items:center;font-size:20px}
+header b{display:block;font-size:1.05rem}header small{color:var(--muted)}
+.hero{padding:34px 16px 28px;color:#fff;background:linear-gradient(180deg,rgba(8,20,14,.25),rgba(8,20,14,.72)),var(--foto,linear-gradient(160deg,var(--hero1),var(--hero2) 45%,var(--hero3)))}
+.chip{display:inline-block;padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.18);font-size:.85rem;margin-bottom:18px}
+h1{font-size:2.15rem;line-height:1.12;margin:0 0 16px;font-weight:700}
+.hero p{font-size:1.08rem;margin:0 0 22px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font:inherit;font-weight:700;font-size:1.02rem;border:0;border-radius:99px;padding:15px 24px;cursor:pointer;background:var(--g);color:#fff}
+.btn.w{background:#fff;color:var(--g)}
+section.s{padding:34px 16px 6px}
+h2{font-size:1.7rem;margin:0 0 8px;font-weight:700}
+.lead{color:var(--muted);font-size:1.05rem;margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:12px}
+.num{width:38px;height:38px;border-radius:50%;background:var(--gsoft);color:var(--g);font-weight:700;display:grid;place-items:center;margin-bottom:12px}
+.card h3{margin:0 0 4px;font-size:1.1rem}.card p{margin:0;color:var(--muted)}
+.tl{position:relative;padding:6px 0}
+.stop{display:flex;gap:14px;padding:8px 0;position:relative}
+.stop::before{content:"";width:22px;height:22px;border-radius:50%;border:5px solid var(--g);background:var(--card);flex:none;margin-top:2px;z-index:1}
+.stop:not(:last-child)::after{content:"";position:absolute;left:10px;top:30px;bottom:-14px;width:2px;background:var(--gsoft)}
+.stop b{display:block}.stop span{color:var(--muted);font-size:.9rem}
+.info{display:flex;gap:14px;align-items:center}.info i{font-style:normal;font-size:2rem}
+.price{background:var(--g);color:#fff;border-radius:18px;padding:28px 18px;text-align:center;margin-bottom:12px}
+.price b{display:block;font-size:3.4rem;font-weight:900;line-height:1}.price span{opacity:.9}
+.qr{text-align:center;padding:24px 18px}.qr h2{font-size:1.6rem}
+#qrbox{width:190px;margin:0 auto 18px;padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff}
+#qrbox svg{width:100%;height:auto;display:block}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:10px}
+summary{font-weight:700;font-size:1.05rem;cursor:pointer}details p{margin:10px 0 0;color:var(--muted)}
+footer{background:var(--dark);color:#fff;padding:34px 16px 110px;margin-top:40px;text-align:center}
+footer small{display:block;color:#b8c7be;margin-top:4px}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--wa);color:#fff;font-weight:700;border-radius:99px;padding:15px 22px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:40;display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex}
+.sheet{background:var(--card);width:100%;max-width:520px;max-height:92%;overflow-y:auto;border-radius:22px 22px 0 0;padding:20px 18px calc(20px + env(safe-area-inset-bottom,0px))}
+.sheet h2{font-size:1.4rem}
+.f{margin-bottom:14px}.f label{display:block;font-weight:700;font-size:.9rem;margin-bottom:5px}
+input,select{width:100%;padding:12px;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.carwrap{background:var(--gsoft);border-radius:18px;padding:16px 10px 12px;text-align:center}
+.frente{font-size:.8rem;font-weight:700;color:var(--g);margin-bottom:8px}
+.carbody{position:relative;width:100%;max-width:290px;margin:0 auto;background:var(--card);border:3px solid var(--g);border-radius:56px 56px 26px 26px;padding:30px 16px 16px}
+.carbody::before{content:"";position:absolute;left:22px;right:22px;top:9px;height:12px;border-radius:12px 12px 4px 4px;background:var(--gsoft);border:2px solid var(--g)}
+.wh{position:absolute;width:10px;height:44px;border-radius:5px;background:#33413a}
+.wh.a{left:-9px;top:16%}.wh.b{right:-9px;top:16%}.wh.c{left:-9px;bottom:12%}.wh.d{right:-9px;bottom:12%}
+.fila{display:flex;gap:8px;margin-bottom:10px}.fila:last-child{margin-bottom:0}
+.seat{flex:1;min-width:0;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid var(--g);border-radius:14px;background:var(--card);color:var(--g);font-size:.75rem;font-weight:700;line-height:1.15;cursor:pointer;user-select:none;padding:4px}
+.seat .ic{font-size:1.25rem}
+.seat.on{background:var(--g);color:#fff}
+.seat.drv{border-color:var(--line);color:var(--muted);background:var(--bg);cursor:default}
+.elegido{margin:10px 0 0;font-size:.88rem;font-weight:700;color:var(--g)}
+.ced{display:flex;gap:10px}.ced select{width:88px;flex:none}.ced input{flex:1;min-width:0}
+.sheet h3{font-size:1.1rem;margin:22px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+.pay{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:12px;font-size:.92rem;margin-bottom:14px}
+.err{display:none;color:#b3341f;font-weight:700;margin:0 0 12px}
+.x{float:right;background:none;border:0;font-size:1.6rem;color:var(--muted);cursor:pointer}
+button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="logo">🚐</div><div><b>Transporte Bosque Valle</b><small>Tazón · Caracas</small></div></header>
+
+<div class="hero">
+  <span class="chip">🚐 Transporte privado del conjunto</span>
+  <h1>De Bosque Valle a Los Símbolos, con tu puesto asegurado.</h1>
+  <p>Salidas cada hora de 6:00 am a 9:00 pm. Aparta tu puesto desde el teléfono, paga por Pago Móvil y te avisamos cuando el carro esté en la parada.</p>
+  <div class="btns"><button class="btn" data-reservar>Reservar mi puesto</button><a class="btn w" href="#ruta">Ver la ruta</a></div>
+</div>
+
+<section class="s" id="como">
+  <h2>Así de fácil</h2>
+  <p class="lead">Sin llamadas y sin quedarte sin puesto. Todo desde tu teléfono.</p>
+  <div class="card"><div class="num">1</div><h3>Escoge la hora</h3><p>Ves cada salida y cuántos puestos quedan.</p></div>
+  <div class="card"><div class="num">2</div><h3>Toca tu puesto</h3><p>Copiloto o atrás: escoges en el dibujo del carro.</p></div>
+  <div class="card"><div class="num">3</div><h3>Paga 900 Bs</h3><p>Por Pago Móvil. Pones la referencia y la captura.</p></div>
+  <div class="card"><div class="num">4</div><h3>Te avisamos</h3><p>Te llega un aviso cuando el carro está en la parada.</p></div>
+</section>
+
+<section class="s" id="ruta">
+  <h2>La ruta</h2>
+  <p class="lead">Subida y bajada con los mismos horarios. El viaje dura de 20 a 30 minutos.</p>
+  <div class="card tl">
+    <div class="stop"><div><b>Tanque de Bosque Valle</b><span>Salida desde el conjunto</span></div></div>
+    <div class="stop"><div><b>Hospital Vicente Salias</b><span>Parada</span></div></div>
+    <div class="stop"><div><b>IPSFA</b><span>Parada</span></div></div>
+    <div class="stop"><div><b>Los Símbolos</b><span>Última parada y retorno a Bosque Valle</span></div></div>
+  </div>
+  <div class="card info"><i>🕕</i><div><h3>Cada hora</h3><p>De 6:00 am a 9:00 pm</p></div></div>
+  <div class="card info"><i>📅</i><div><h3>Lunes a viernes</h3><p>Reserva hoy o para otro día de la semana</p></div></div>
+  <div class="card info"><i>🚗</i><div><h3>4 puestos por salida</h3><p>Cuando se llena, esa salida se cierra sola.</p></div></div>
+  <div class="price"><b>900 Bs</b><span>Tarifa única por viaje · Pago Móvil</span></div>
+</section>
+
+<section class="s">
+  <div class="card qr">
+    <div id="qrbox" hidden></div>
+    <h2>Compártela con tus vecinos</h2>
+    <p class="lead">Escanea el código o mándalo al grupo del conjunto. Y guarda la página en tu teléfono para reservar en un toque, sin descargar nada.</p>
+    <button class="btn" id="qr-btn" type="button">Descargar el código QR</button>
+  </div>
+</section>
+
+<section class="s">
+  <h2>Preguntas frecuentes</h2>
+  <details><summary>¿Cómo pago mi puesto?</summary><p>Por Pago Móvil, 900 Bs por persona. Al reservar verás los datos de pago: haces la transferencia, pones la referencia y envías la captura por WhatsApp.</p></details>
+  <details><summary>¿Y si no llego a la salida?</summary><p>Escríbenos por WhatsApp lo antes posible para ver si tu puesto se puede pasar a otra salida.</p></details>
+  <details><summary>¿Cómo sé que el carro llegó?</summary><p>Te avisamos por WhatsApp cuando el carro esté en la parada.</p></details>
+  <details><summary>¿Tengo que descargar una app?</summary><p>No. Guarda esta página en tu teléfono y reserva en un toque.</p></details>
+</section>
+
+<footer><b>Transporte Bosque Valle</b><small>Residencial Bosque Valle, Tazón, Caracas</small></footer>
+</div>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+
+<div class="ov" id="ov"><div class="sheet" role="dialog" aria-label="Reservar mi puesto">
+  <button class="x" id="cerrar" type="button" aria-label="Cerrar">×</button>
+  <h2>Reservar mi puesto</h2>
+  <p class="lead">Lunes a viernes, de 6:00 am a 9:00 pm.</p>
+  <div class="r2">
+    <div class="f"><label for="fecha">Fecha</label><input id="fecha" type="date"></div>
+    <div class="f"><label for="hora">Hora de salida</label><select id="hora"></select></div>
+  </div>
+  <div class="r2">
+    <div class="f"><label for="sube">Sube en</label><select id="sube"></select></div>
+    <div class="f"><label for="baja">Baja en</label><select id="baja"></select></div>
+  </div>
+  <div class="f"><label>Toca tu puesto en el carro</label>
+    <div class="carwrap">
+      <div class="frente">▲ Frente del carro</div>
+      <div class="carbody" id="car">
+        <span class="wh a"></span><span class="wh b"></span><span class="wh c"></span><span class="wh d"></span>
+        <div class="fila">
+          <div class="seat drv"><span class="ic">🧑‍✈️</span>Conductor</div>
+          <div class="seat" role="button" tabindex="0" data-p="Copiloto"><span class="ic">💺</span>Copiloto</div>
+        </div>
+        <div class="fila">
+          <div class="seat" role="button" tabindex="0" data-p="Atrás izquierda"><span class="ic">💺</span>Atrás izq.</div>
+          <div class="seat" role="button" tabindex="0" data-p="Atrás centro"><span class="ic">💺</span>Atrás centro</div>
+          <div class="seat" role="button" tabindex="0" data-p="Atrás derecha"><span class="ic">💺</span>Atrás der.</div>
+        </div>
+      </div>
+      <p class="elegido" id="elegido">Aún no has elegido puesto</p>
+    </div>
+  </div>
+  <div class="f"><label for="nombre">Nombre completo del pasajero</label><input id="nombre" type="text" autocomplete="name"></div>
+
+  <h3>Reporte de pago</h3>
+  <div class="pay"><b>Paga 900 Bs por Pago Móvil a:</b><br><span id="datos"></span></div>
+  <div class="f"><label for="banco">Banco desde el que pagaste</label><select id="banco"></select></div>
+  <div class="f"><label for="ced">Cédula del pasajero</label>
+    <div class="ced"><select id="nac"><option>V</option><option>E</option></select><input id="ced" type="text" inputmode="numeric" placeholder="Ej: 12345678" maxlength="9"></div>
+  </div>
+  <div class="f"><label for="tel">Teléfono del pasajero</label><input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 0412 1234567" maxlength="16"></div>
+  <div class="f"><label for="ref">Número de referencia del pago</label><input id="ref" type="text" inputmode="numeric" placeholder="Ej: 004512" maxlength="20"></div>
+
+  <p class="err" id="err" role="alert"></p>
+  <button class="btn" id="enviar" type="button" style="width:100%">Apartar y enviar por WhatsApp</button>
+  <p style="font-size:.8rem;color:var(--muted);margin:10px 0 0">Adjunta la captura del pago en el chat. El puesto queda confirmado cuando el conductor te responda.</p>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+(function(){
+  // === CONFIGURA AQUÍ ===
+  var WA = "584242427429";                 // WhatsApp que recibe los reportes, con código de país, sin +
+  var DATOS = "Banco ____ · Tel. ____ · C.I. ____"; // datos de Pago Móvil que recibe el pago
+  var FOTO = "";                           // opcional: enlace de la foto de portada
+  // ======================
+  var PARADAS = ["Tanque de Bosque Valle","Hospital Vicente Salias","IPSFA","Los Símbolos"];
+  var $ = function(i){return document.getElementById(i)};
+  if(FOTO) document.querySelector(".hero").style.setProperty("--foto","url("+FOTO+") center/cover");
+  $("fab").href = "https://wa.me/"+WA+"?text="+encodeURIComponent("Hola, quiero información del transporte de Bosque Valle.");
+  $("datos").textContent = DATOS;
+  var BANCOS = ["0102 · Banco de Venezuela","0104 · Venezolano de Crédito","0105 · Mercantil","0108 · Provincial (BBVA)","0114 · Bancaribe","0115 · Banco Exterior","0128 · Banco Caroní","0134 · Banesco","0137 · Sofitasa","0138 · Banco Plaza","0151 · BFC Banco Fondo Común","0156 · 100% Banco","0157 · DelSur","0163 · Banco del Tesoro","0166 · Banco Agrícola de Venezuela","0168 · Bancrecer","0169 · Mi Banco","0171 · Banco Activo","0172 · Bancamiga","0174 · Banplus","0175 · Banco Bicentenario","0177 · Banfanb","0191 · BNC Banco Nacional de Crédito","Otro banco"];
+  $("banco").add(new Option("Selecciona tu banco",""));
+  BANCOS.forEach(function(b){$("banco").add(new Option(b,b))});
+
+  PARADAS.forEach(function(p){$("sube").add(new Option(p,p));$("baja").add(new Option(p,p))});
+  $("baja").selectedIndex = 3;
+  for(var h=6;h<=21;h++){
+    var et=(h>12?h-12:h)+":00 "+(h<12?"a. m.":"p. m.");
+    $("hora").add(new Option(et,String(h).padStart(2,"0")+":00"));
+  }
+  function hoy(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function finde(v){var d=new Date(v+"T00:00:00").getDay();return d===0||d===6}
+  $("fecha").min = hoy();
+  function err(t){var e=$("err");e.textContent=t;e.style.display=t?"block":"none";return false}
+
+  var puesto="";
+  function elegir(el){
+    [].forEach.call($("car").querySelectorAll("[data-p]"),function(x){x.classList.remove("on")});
+    el.classList.add("on");puesto=el.getAttribute("data-p");
+    $("elegido").textContent="✓ Puesto elegido: "+puesto;err("");
+  }
+  $("car").addEventListener("click",function(e){var s=e.target.closest("[data-p]");if(s)elegir(s)});
+  $("car").addEventListener("keydown",function(e){
+    if(e.key==="Enter"||e.key===" "){var s=e.target.closest("[data-p]");if(s){e.preventDefault();elegir(s)}}
+  });
+  [$("ced"),$("ref")].forEach(function(i){i.addEventListener("input",function(){this.value=this.value.replace(/\D/g,"")})});
+
+  $("fecha").addEventListener("change",function(){
+    if(this.value&&finde(this.value)){err("El servicio funciona de lunes a viernes. Elige otra fecha.");this.value=""}else err("");
+  });
+
+  function abrir(){$("ov").classList.add("on")}
+  function cerrar(){$("ov").classList.remove("on")}
+  [].forEach.call(document.querySelectorAll("[data-reservar]"),function(b){b.addEventListener("click",abrir)});
+  $("cerrar").addEventListener("click",cerrar);
+  $("ov").addEventListener("click",function(e){if(e.target===this)cerrar()});
+
+  $("enviar").addEventListener("click",function(){
+    var f=$("fecha").value,h=$("hora").value,n=$("nombre").value.trim(),t=$("tel").value.trim(),r=$("ref").value.trim(),ced=$("ced").value.trim(),bk=$("banco").value;
+    if(!f)return err("Elige la fecha.");
+    if(f<hoy())return err("La fecha no puede ser anterior a hoy.");
+    if(finde(f))return err("El servicio funciona de lunes a viernes.");
+    if(f===hoy()){var d=new Date();var ya=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");if(h<=ya)return err("Esa salida ya pasó. Elige una hora posterior.")}
+    if($("sube").value===$("baja").value)return err("Las paradas de subida y bajada deben ser distintas.");
+    if(!puesto)return err("Toca tu puesto en el dibujo del carro.");
+    if(!n)return err("Escribe el nombre completo del pasajero.");
+    if(!bk)return err("Selecciona el banco desde el que pagaste.");
+    if(ced.length<6)return err("Escribe una cédula válida.");
+    if(t.replace(/\D/g,"").length<10)return err("Escribe un teléfono válido, con código de área.");
+    if(!r)return err("Escribe el número de referencia del pago.");
+    err("");
+    var hl=$("hora").options[$("hora").selectedIndex].text;
+    var m="¡Hola! Quiero apartar un puesto y reportar mi pago.\n\n"+
+      "👤 Pasajero: "+n+"\n🪪 Cédula: "+$("nac").value+"-"+ced+"\n📞 Teléfono: "+t+"\n\n"+
+      "📅 Fecha: "+f+"\n⏰ Salida: "+hl+"\n📍 Sube en: "+$("sube").value+"\n🏁 Baja en: "+$("baja").value+"\n💺 Puesto: "+puesto+"\n\n"+
+      "💵 Pago: 900 Bs\n🏦 Banco: "+bk+"\n🔢 Referencia: "+r+"\n\nTe envío la captura del pago por este chat.";
+    window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(m),"_blank","noopener");
+  });
+
+  // Código QR de esta página
+  try{
+    var q=qrcode(0,"M");q.addData(location.href);q.make();
+    var svg=q.createSvgTag(4,0).replace(/fill="black"/g,'fill="#176a45"');
+    $("qrbox").innerHTML=svg;$("qrbox").hidden=false;
+    $("qr-btn").addEventListener("click",function(){
+      var a=document.createElement("a");
+      a.href="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
+      a.download="qr-bv-trip.svg";a.click();
+    });
+  }catch(e){
+    $("qr-btn").addEventListener("click",function(){
+      if(navigator.share)navigator.share({title:document.title,url:location.href}).catch(function(){});
+    });
+  }
+})();
+</script>
+</body>
+</html>
